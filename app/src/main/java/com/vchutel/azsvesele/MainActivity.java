@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // создаём строку для таблицы
                 TableRow row = new TableRow(MainActivity.this);
-                row.addView(textUser); // добавляем в строку столбец с именем пользователя
+                row.addView(textUser);// добавляем в строку столбец с именем пользователя
                 tableRow.addView(row); // добавляем в таблицу новую строку
             }
 
