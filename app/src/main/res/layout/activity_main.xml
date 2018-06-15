@@ -36,7 +36,40 @@
     <TableLayout
         android:id="@+id/tableLayoutOne"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+
+        <TableRow android:background="#cccccc"
+            android:padding="5dp">
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Дата"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                />
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Кол-во"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                />
+        </TableRow>
+        <TableRow android:background="#cccccc"
+            android:padding="5dp">
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Дата"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                />
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Кол-во"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                />
+        </TableRow>
+
 
     </TableLayout>
 

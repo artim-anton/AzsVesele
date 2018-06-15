@@ -148,10 +148,16 @@ public class MainActivity extends AppCompatActivity {
 
                 textUser.setText(hashMapOne.get(i).toString());
 
-                // создаём строку для таблицы
-                TableRow row = new TableRow(MainActivity.this);
-                row.addView(textUser);// добавляем в строку столбец с именем пользователя
-                tableRowOne.addView(row); // добавляем в таблицу новую строку
+
+                for (int j = 0; j < 1; j++) {
+                    // создаём строку для таблицы
+                    TableRow row = new TableRow(MainActivity.this);
+                    row.addView(textUser);// добавляем в строку столбец с именем пользователя
+                    tableRowOne.addView(row); // добавляем в таблицу новую строку
+
+                }
+
+
 
             }
 
