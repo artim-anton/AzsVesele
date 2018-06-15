@@ -137,42 +137,49 @@ public class MainActivity extends AppCompatActivity {
             tvRelevanceTwo.setText(RelevanceTwo);
 
 
-            TableLayout.LayoutParams viewParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
-                    TableLayout.LayoutParams.MATCH_PARENT);
-
             for (int i=0; i<hashMapOne.size(); i++) {
-                TextView textUser = new TextView(MainActivity.this);
-                textUser.setGravity(Gravity.LEFT);
-                //textUser.setLayoutParams(viewParams);
-                textUser.setTextColor(0xff000000);
+                TextView textPrice = new TextView(MainActivity.this);
+                TextView textName = new TextView(MainActivity.this);
 
-                textUser.setText(hashMapOne.get(i).toString());
+                textName.setGravity(Gravity.LEFT);
+                textName.setTextColor(0xff000000);
+
+                textPrice.setGravity(Gravity.CENTER);
+                textPrice.setTextColor(0xff000000);
+
+                textName.setText(hashMapOne.get(i).get(0).toString());
+                textPrice.setText(hashMapOne.get(i).get(1).toString());
 
 
-                for (int j = 0; j < 1; j++) {
-                    // создаём строку для таблицы
-                    TableRow row = new TableRow(MainActivity.this);
-                    row.addView(textUser);// добавляем в строку столбец с именем пользователя
-                    tableRowOne.addView(row); // добавляем в таблицу новую строку
 
-                }
-
+                // создаём строку для таблицы
+                TableRow rowPrice = new TableRow(MainActivity.this);
+                rowPrice.addView(textName);// добавляем в строку столбец с именем пользователя
+                rowPrice.addView(textPrice);// добавляем в строку столбец с именем пользователя
+                tableRowOne.addView(rowPrice); // добавляем в таблицу новую строку
 
 
             }
 
 
            for (int i=0; i<hashMapTwo.size(); i++) {
-                TextView textUserTwo = new TextView(MainActivity.this);
-                textUserTwo.setGravity(Gravity.LEFT);
-                //textUser.setLayoutParams(viewParams);
-                textUserTwo.setTextColor(0xff000000);
+               TextView textPrice = new TextView(MainActivity.this);
+               TextView textName = new TextView(MainActivity.this);
 
-                textUserTwo.setText(hashMapTwo.get(i).toString());
+               textName.setGravity(Gravity.LEFT);
+               textName.setTextColor(0xff000000);
+
+               textPrice.setGravity(Gravity.CENTER);
+               textPrice.setTextColor(0xff000000);
+
+
+               textName.setText(hashMapTwo.get(i).get(0).toString());
+               textPrice.setText(hashMapTwo.get(i).get(1).toString());
 
                 // создаём строку для таблицы
                 TableRow rowTwo = new TableRow(MainActivity.this);
-                rowTwo.addView(textUserTwo);// добавляем в строку столбец с именем пользователя
+                rowTwo.addView(textName);// добавляем в строку столбец с именем пользователя
+               rowTwo.addView(textPrice);// добавляем в строку столбец с именем пользователя
                 tableRowTwo.addView(rowTwo); // добавляем в таблицу новую строку
             }
 

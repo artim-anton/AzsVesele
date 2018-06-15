@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -22,6 +26,10 @@
         android:text="АЗС УКРНАФТА, Запорожская область, Веселовский район, поселок городского типа Веселое, улица Пушкина (пгт. Веселое, ул. Пушкина, 1-В)" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+    <TextView
         android:id="@+id/RelevanceOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,36 +47,6 @@
         android:layout_height="wrap_content"
         android:stretchColumns="*">
 
-        <TableRow android:background="#cccccc"
-            android:padding="5dp">
-            <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Дата"
-                android:gravity="center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
-            <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Кол-во"
-                android:gravity="center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
-        </TableRow>
-        <TableRow android:background="#cccccc"
-            android:padding="5dp">
-            <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Дата"
-                android:gravity="center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
-            <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Кол-во"
-                android:gravity="center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
-        </TableRow>
 
 
     </TableLayout>
@@ -88,6 +66,10 @@
         android:text="АЗС ZOG, Запорожская область, Веселовский район, поселок городского типа Веселое, Центральная улица (Запорожская обл. Весёловский район, c. Весёлое)" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+    <TextView
         android:id="@+id/RelevanceTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -97,8 +79,10 @@
     <TableLayout
         android:id="@+id/tableLayoutTwo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
 
     </TableLayout>
 
 </LinearLayout>
+</ScrollView>
