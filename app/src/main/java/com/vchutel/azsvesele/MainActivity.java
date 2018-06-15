@@ -22,8 +22,12 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     ProgressDialog mProgressDialog;
-    HashMap<Integer, ArrayList<String>> hashMap = new HashMap<Integer, ArrayList<String>>();
-    String url = "https://www.azski.com.ua/networks/avias/07c52181-7ee6-4a4b-8322-4615f414041d";
+    HashMap<Integer, ArrayList<String>> hashMapOne = new HashMap<Integer, ArrayList<String>>();
+    HashMap<Integer, ArrayList<String>> hashMapTwo = new HashMap<Integer, ArrayList<String>>();
+    String urlAzsOne = "https://www.azski.com.ua/networks/avias/07c52181-7ee6-4a4b-8322-4615f414041d";
+    String urlAzsTwo = "https://www.azski.com.ua/networks/zog/32";
+    String AzsNameOne, AzsNameTwo;
+    String RelevanceOne, RelevanceTwo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
     class MyTask extends AsyncTask<Void, Void, Void> {
 
-        TableLayout tableRow = (TableLayout) findViewById(R.id.tablelayout);
+        TableLayout tableRowOne = (TableLayout) findViewById(R.id.tableLayoutOne);
+        TableLayout tableRowTwo = (TableLayout) findViewById(R.id.tableLayoutTwo);
+
         ArrayList<HashMap<String, String>> userTable = new ArrayList<HashMap<String, String>>();
 
 
@@ -52,26 +58,63 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
 
-            int count = 0;
+            int countOne = 0;
+            int countTwo = 0;
             try {
-                Document doc = Jsoup.connect(url).get();
-                if (doc != null) {
-                    Elements tableRows = doc.getElementsByClass("fuel-gas-station-price-table").select("tr");
-                    for (int i = 0; i < tableRows.size(); i++) {
-                        Element row = tableRows.get(i);
+                Document docOne = Jsoup.connect(urlAzsOne).get();
+                Document docTwo = Jsoup.connect(urlAzsTwo).get();
+                if (docOne != null || docTwo != null) {
+                    Elements tableRowsOne = docOne.getElementsByClass("fuel-gas-station-price-table").select("tr");
+                    Elements tableRowsTwo = docTwo.getElementsByClass("fuel-gas-station-price-table").select("tr");
 
-                        ArrayList<String> arrayList = new ArrayList<String>();
-                        Elements rowItems = row.select("td");  //select
-                        for (int j = 0; j < rowItems.size(); j++) {
-                            arrayList.add(rowItems.get(j).text());
+                    String subAzsNameOne = docOne.getElementsByClass("gas-stations-content-description").first().toString();
+                    AzsNameOne = subAzsNameOne.substring(48, subAzsNameOne.length()-8);
+                    String subRelevanceOne = docOne.getElementsByClass("gas-stations-content-description").last().toString();
+                    RelevanceOne = subRelevanceOne.substring(48, subRelevanceOne.length()-7);
+
+                    String subAzsNameTwo = docTwo.getElementsByClass("gas-stations-content-description").first().toString();
+                    AzsNameTwo = subAzsNameTwo.substring(48, subAzsNameTwo.length()-7);
+                    String subRelevanceTwo = docTwo.getElementsByClass("gas-stations-content-description").last().toString();
+                    RelevanceTwo = subRelevanceTwo.substring(48, subRelevanceTwo.length()-7);
+
+                    for (int i = 0; i < tableRowsOne.size(); i++) {
+                        Element rowOne = tableRowsOne.get(i);
+
+                        ArrayList<String> arrayListOne = new ArrayList<String>();
+                        Elements rowItemsOne = rowOne.select("td");  //select
+                        for (int j = 0; j < rowItemsOne.size(); j++) {
+                            arrayListOne.add(rowItemsOne.get(j).text());
                         }
-                        hashMap.put(count, arrayList);
-                        count++;
-                        Log.d("Output", hashMap.toString());
-                        for (Element link : rowItems) {
+                        hashMapOne.put(countOne, arrayListOne);
+                        countOne++;
+                        Log.d("Output", hashMapOne.toString());
+                        for (Element link : rowItemsOne) {
                             //Log.d("Return: ", "" + link.text());
                             //receivedStr = link.text();
                         }
+
+
+
+                    }
+
+                    for (int i = 0; i < tableRowsTwo.size(); i++) {
+                        Element rowTwo = tableRowsTwo.get(i);
+
+                        ArrayList<String> arrayListTwo = new ArrayList<String>();
+                        Elements rowItemsTwo = rowTwo.select("td");  //select
+                        for (int j = 0; j < rowItemsTwo.size(); j++) {
+                            arrayListTwo.add(rowItemsTwo.get(j).text());
+                        }
+                        hashMapTwo.put(countTwo, arrayListTwo);
+                        countTwo++;
+                        Log.d("Output", hashMapTwo.toString());
+                        for (Element link : rowItemsTwo) {
+                            //Log.d("Return: ", "" + link.text());
+                            //receivedStr = link.text();
+                        }
+
+
+
                     }
                 }
             } catch (IOException e) {
@@ -83,22 +126,48 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
+            TextView tvAzsNameOne = findViewById(R.id.AzsNameOne);
+            TextView tvAzsNameTwo = findViewById(R.id.AzsNameTwo);
+            TextView tvRelevanceOne = findViewById(R.id.RelevanceOne);
+            TextView tvRelevanceTwo = findViewById(R.id.RelevanceTwo);
+
+            tvAzsNameOne.setText(AzsNameOne);
+            tvAzsNameTwo.setText(AzsNameTwo);
+            tvRelevanceOne.setText(RelevanceOne);
+            tvRelevanceTwo.setText(RelevanceTwo);
+
 
             TableLayout.LayoutParams viewParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
                     TableLayout.LayoutParams.MATCH_PARENT);
 
-            for (int i=0; i<hashMap.size(); i++) {
+            for (int i=0; i<hashMapOne.size(); i++) {
                 TextView textUser = new TextView(MainActivity.this);
                 textUser.setGravity(Gravity.LEFT);
                 //textUser.setLayoutParams(viewParams);
                 textUser.setTextColor(0xff000000);
 
-                textUser.setText(hashMap.get(i).toString());
+                textUser.setText(hashMapOne.get(i).toString());
 
                 // создаём строку для таблицы
                 TableRow row = new TableRow(MainActivity.this);
                 row.addView(textUser);// добавляем в строку столбец с именем пользователя
-                tableRow.addView(row); // добавляем в таблицу новую строку
+                tableRowOne.addView(row); // добавляем в таблицу новую строку
+
+            }
+
+
+           for (int i=0; i<hashMapTwo.size(); i++) {
+                TextView textUserTwo = new TextView(MainActivity.this);
+                textUserTwo.setGravity(Gravity.LEFT);
+                //textUser.setLayoutParams(viewParams);
+                textUserTwo.setTextColor(0xff000000);
+
+                textUserTwo.setText(hashMapTwo.get(i).toString());
+
+                // создаём строку для таблицы
+                TableRow rowTwo = new TableRow(MainActivity.this);
+                rowTwo.addView(textUserTwo);// добавляем в строку столбец с именем пользователя
+                tableRowTwo.addView(rowTwo); // добавляем в таблицу новую строку
             }
 
             mProgressDialog.dismiss();

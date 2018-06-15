@@ -1,16 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".MainActivity">
 
- <TableLayout
-     android:id="@+id/tablelayout"
-     android:layout_width="fill_parent"
-     android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="АЗС УКРНАФТА"
+        android:textSize="24dp"
+        android:textStyle="bold" />
 
- </TableLayout>
+    <TextView
+        android:id="@+id/AzsNameOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="АЗС УКРНАФТА, Запорожская область, Веселовский район, поселок городского типа Веселое, улица Пушкина (пгт. Веселое, ул. Пушкина, 1-В)" />
 
-</TableLayout>
+    <TextView
+        android:id="@+id/RelevanceOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Актуальность:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TableLayout
+        android:id="@+id/tableLayoutOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TableLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="АЗС ZOG"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/AzsNameTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="АЗС ZOG, Запорожская область, Веселовский район, поселок городского типа Веселое, Центральная улица (Запорожская обл. Весёловский район, c. Весёлое)" />
+
+    <TextView
+        android:id="@+id/RelevanceTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Актуальность:"
+        android:textStyle="bold" />
+
+    <TableLayout
+        android:id="@+id/tableLayoutTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TableLayout>
+
+</LinearLayout>
